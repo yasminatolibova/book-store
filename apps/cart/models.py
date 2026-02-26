@@ -7,16 +7,14 @@ from django.core.validators import MinValueValidator
 
 class Cart(models.Model):
     user= models. ForeignKey(User, on_delete=models.CASCADE, related_name='cart', blank=True, null=True)
-    session_key=models.CharField(max_length=40, null=True, blank=True)
-    created_at=models.DateTimeField(auto_now_add=True)
+     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField()
     is_active=models.BooleanField(default=True)
 
     def __str__(self):
-        if self.user:
-           return f"{self.user.username}"
-        return f"{self.session_key[:8]} or unknown"
     
+           return f"{self.user.username}"
+        
     def get_total_items(self):
         return self.items.aggregate(total=models.Sum('quantity'))['total'] or 0
     
