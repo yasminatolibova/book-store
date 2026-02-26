@@ -40,6 +40,7 @@ urlpatterns = [
     path('api/accounts/', include("apps.accounts.urls")),
     path('api/comment/', include('apps.comment.urls')),
     path('api/book', include("apps.book.urls")),
+    path('api/cart', include("apps.cart.urls")),
     path('swagger/',schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
 ]

@@ -27,7 +27,7 @@ class Book(models.Model):
     description=models.TextField(blank=True)
     price=models.DecimalField(max_digits=10, decimal_places=2)
     discount_price=models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    stock=models.BooleanField(default=True)
+    stock=models.PositiveIntegerField(default=0)
     isbn=models.CharField(max_length=13, unique=True)
     language=models.CharField(max_length=50, default='Uzbek')
     pages=models.PositiveIntegerField()

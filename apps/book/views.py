@@ -28,8 +28,7 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class=CategorySerializer
     permission_classes=[permissions.IsAuthenticated, IsOwnerOrReadOnly]
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    
 
 
 class BookListCreateView(generics.ListCreateAPIView):
@@ -50,8 +49,7 @@ class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes=[permissions.IsAuthenticated, IsOwnerOrReadOnly]
     lookup_field='slug'
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+    
 
 
 class AuthorListCreateView(generics.ListCreateAPIView):
@@ -72,6 +70,4 @@ class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes=[permissions.IsAuthenticated, IsOwnerOrReadOnly]
     lookup_field='id'
 
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
+    
