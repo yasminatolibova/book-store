@@ -1,25 +1,23 @@
 from django.db import models
 from django.conf import settings
 # Create your models here.
-from ..book.models import Book
+from ..book.models import Book, Coupon
 from ..accounts.models import User
 from django.core.validators import MinValueValidator
 
-class Cart(models.Model):
-    user= models. ForeignKey(User, on_delete=models.CASCADE, related_name='cart', blank=True, null=True)
-    
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField()
-    is_active=models.BooleanField(default=True)
 
-    def __str__(self):
-        
-        return f"{self.user.username}"
-        
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
     
+    def __str__(self):
+        return f"{self.user.username}"
+
     def get_total_items(self):
         return self.items.aggregate(total=models.Sum('quantity'))['total'] or 0
-    
+
     def get_total_price(self):
         return sum(item.get_subtotal() for item in self.items.all())
     
@@ -54,6 +52,12 @@ class Order(models.Model):
         ("check", "Check")
     ]
     payment_method=models.CharField(max_length=20, choices=PAYMENT_METHOD, default='card')
+    coupon=models.ForeignKey(Coupon, on_delete=models.CASCADE, blank=True, null=True)
+    discount_amount=models.DecimalField(max_digits=5, decimal_places=2, default=0)
+
+    def final_price(self):
+        return self.total_amount-self.discount_amount
+
 
 
     def __str__(self):

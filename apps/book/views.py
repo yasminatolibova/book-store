@@ -2,15 +2,15 @@ from django.shortcuts import render
 
 # Create your views here.
 from .models import Category, Author, Book
-from rest_framework import permissions,  generics
+from rest_framework import permissions,  generics, status
 from rest_framework.response import Response
-from .serializers import CategorySerializer, AuthorSerializer, BookSerializer
+from .serializers import CategorySerializer, AuthorSerializer, BookSerializer, CouponApplySerializer
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.decorators import action
 from django.shortcuts import get_object_or_404
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.decorators import api_view
-
+from rest_framework.views import APIView
 
 
 class CategoryListCreateView(generics.ListCreateAPIView):
@@ -71,3 +71,21 @@ class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
     lookup_field='id'
 
     
+
+
+class PromoCodeView(APIView):
+    permission_classes = [permissions.IsAuthenticated]   
+
+    def post(self, request):
+        serializer = CouponApplySerializer(data=request.data)
+        if not serializer.is_valid():
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        coupon = serializer.validated_data['code']  
+        request.session['promo_code'] = coupon.code
+        request.session['discount_percent'] = float(coupon.discount)
+
+        return Response({
+            "message": f"Promo kod qo'llanildi: {coupon.code}",
+            "discount": f"{coupon.discount}% chegirma",
+            
+        }, status=status.HTTP_200_OK)
