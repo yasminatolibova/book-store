@@ -31,9 +31,9 @@ class CouponApplySerializer(serializers.Serializer):
         try:
             coupon = Coupon.objects.get(code__iexact=value)  
         except Coupon.DoesNotExist:
-            raise serializers.ValidationError("Bunday promo kod mavjud emas.")
+            raise serializers.ValidationError("Not available.")
         
         if not coupon.is_valid():
-            raise serializers.ValidationError("Promo kod muddati tugagan yoki faol emas.")
+            raise serializers.ValidationError("Is not active.")
         
         return coupon
