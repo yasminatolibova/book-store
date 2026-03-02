@@ -37,15 +37,21 @@ git clone https://github.com/yasminatolibova/book-store.git cd store
 Create virtual environment:
 
 python -m venv env
+
 Activate environment Windows: env\Scripts\activate
 
 Install dependencies:
 
 pip install -r requirements.txt
-The first thing after that filling models.py is crucial if not you cant makemigrations. Then register all the models Run migrations:
+
+The first thing after that filling models.py is crucial if not you cant makemigrations. 
+
+Then register all the models Run migrations:
 
 python manage.py makemigrations
+
 python manage.py migrate
+
 Run server:
 
 python manage.py runserver
@@ -66,75 +72,111 @@ Authorization: Token your_token_here
 ### 🔐 Authentication
 
 - POST /api/register/
+
 - POST /api/login/
+
 - POST /api/logout/
+
 - POST /api/reset_password/
 
 
 📚 Book Store API
 🔐 Authentication
 POST /api/register/
+
 POST /api/login/
+
 POST /api/logout/
+
 POST /api/reset_password/
 
 
 📂 Categories
 GET    /api/categories/
+
 POST   /api/categories/
+
 GET    /api/categories/{id}/
+
 PUT    /api/categories/{id}/
+
 PATCH  /api/categories/{id}/
+
 DELETE /api/categories/{id}/
 
 
 📚 Books
 GET    /api/books/
+
 POST   /api/books/
+
 GET    /api/books/{slug}/
+
 PUT    /api/books/{slug}/
+
 PATCH  /api/books/{slug}/
+
 DELETE /api/books/{slug}/
 
 Filters
 GET /api/books/?search=title
+
 GET /api/books/?ordering=language
 
 
 ✍️ Authors
 GET    /api/authors/
+
 POST   /api/authors/
+
 GET    /api/authors/{id}/
+
 PUT    /api/authors/{id}/
+
 PATCH  /api/authors/{id}/
+
 DELETE /api/authors/{id}/
 
 
 🎟 Promo Codes
 GET    /api/coupons/
+
 POST   /api/coupons/
 
 
 ❤️ Wishlist
 POST   /api/wishlist/
+
 GET    /api/wishlist_detail/
+
 DELETE /api/wishlist_detail/{id}/
 
 📌 Comments API
-GET     /api/comments/          
-POST    /api/comments/          
-GET     /api/comments/{id}/     
-PUT     /api/comments/{id}/     
-PATCH   /api/comments/{id}/    
+GET     /api/comments/
+          
+POST    /api/comments/ 
+         
+GET     /api/comments/{id}/
+     
+PUT     /api/comments/{id}/
+     
+PATCH   /api/comments/{id}/  
+  
 DELETE  /api/comments/{id}/     
 
 GET /api/comments/?book=1
+
 ⭐ Rating API
 GET     /api/rating/
+
 POST    /api/rating/
+
 GET     /api/rating/{id}/
+
 PUT     /api/rating/{id}/
+
 PATCH   /api/rating/{id}/
+
 DELETE  /api/rating/{id}/
 
 💬 Comments
