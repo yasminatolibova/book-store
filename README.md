@@ -1,4 +1,4 @@
-Instagram Clone
+Book Store
 
 This is a backend Book Store project built with Django and Django REST Framework.
 
