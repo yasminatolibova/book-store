@@ -31,6 +31,7 @@ class CouponApplySerializer(serializers.Serializer):
         try:
             coupon = Coupon.objects.get(code__iexact=value)  
         except Coupon.DoesNotExist:
+<<<<<<< HEAD
             raise serializers.ValidationError("Not available")
         
         if not coupon.is_valid():
@@ -44,3 +45,11 @@ class WishListSerializer(serializers.ModelSerializer):
     class Meta:
         model=WishList
         fields=['id', 'user', 'book', 'slug']
+=======
+            raise serializers.ValidationError("Not available.")
+        
+        if not coupon.is_valid():
+            raise serializers.ValidationError("Is not active.")
+        
+        return coupon
+>>>>>>> b36bc0a1e1a34e068359c7829ba4937de57dbfcc
