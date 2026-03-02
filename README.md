@@ -1,16 +1,16 @@
 Instagram Clone
 
-This is a backend Instagram Clone project built with Django and Django REST Framework.
+This is a backend Book Store project built with Django and Django REST Framework.
 
 🚀 Features
-User Registration, Login, Logout & Reset password
-Finding out which author books and which books are available in this book store
-Comment System
-Rating System
-Wishlist
-Cart
-Order
-Promo Code
+· User Registration, Login, Logout & Reset password
+· Finding out which author books and which books are available in this book store
+· Comment System
+· Rating System
+· Wishlist
+· Cart
+· Order
+· Promo Code
 🛠 Tech Stack
 Python
 Django
@@ -37,12 +37,26 @@ Run server:
 
 python manage.py runserver
 
-🔑 Authentication
-This project uses JWT authentication.
 
-Get token: /api/token/
+## 🔐 Authentication
 
-Refresh token: /api/token/refresh/
+This project uses **Token Authentication**.
+
+After login, include token in header:
+
+Authorization: Token your_token_here
+
+---
+
+## 📌 API Endpoints
+
+### 🔐 Authentication
+
+- POST /api/register/
+- POST /api/login/
+- POST /api/logout/
+- POST /api/reset_password/
+
 
 📚 Book Store API
 🔐 Authentication
@@ -50,6 +64,8 @@ POST /api/register/
 POST /api/login/
 POST /api/logout/
 POST /api/reset_password/
+
+
 📂 Categories
 GET    /api/categories/
 POST   /api/categories/
@@ -57,6 +73,8 @@ GET    /api/categories/{id}/
 PUT    /api/categories/{id}/
 PATCH  /api/categories/{id}/
 DELETE /api/categories/{id}/
+
+
 📚 Books
 GET    /api/books/
 POST   /api/books/
@@ -68,6 +86,8 @@ DELETE /api/books/{slug}/
 Filters
 GET /api/books/?search=title
 GET /api/books/?ordering=language
+
+
 ✍️ Authors
 GET    /api/authors/
 POST   /api/authors/
@@ -75,16 +95,19 @@ GET    /api/authors/{id}/
 PUT    /api/authors/{id}/
 PATCH  /api/authors/{id}/
 DELETE /api/authors/{id}/
+
+
 🎟 Promo Codes
 GET    /api/coupons/
 POST   /api/coupons/
+
+
 ❤️ Wishlist
 POST   /api/wishlist/
 GET    /api/wishlist_detail/
 DELETE /api/wishlist_detail/{id}/
 
 📌 Comments API
-
 GET     /api/comments/          
 POST    /api/comments/          
 GET     /api/comments/{id}/     
@@ -152,5 +175,6 @@ Pagination enabled
 Filtering, Search, Ordering
 Separate comment app
 Separate cart app
+
 👩🏼‍💻 Author
 Yasmina Tolibova
