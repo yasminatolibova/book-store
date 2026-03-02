@@ -159,7 +159,7 @@ Swagger UI:  /swagger/
 
 API Documentation
 
-<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/fec75bb3-6791-432c-9a31-2031690fe649" />
+<img width="1264" height="637" alt="image" src="https://github.com/user-attachments/assets/a603eebf-10c9-4497-bb0c-d1ca3421ade0" />
 
 
 📂 Project Structure
