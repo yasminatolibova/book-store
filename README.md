@@ -157,6 +157,11 @@ Each rating linked to a book and user
 📦 Orders
 Swagger UI:  /swagger/
 
+API Documentation
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/fec75bb3-6791-432c-9a31-2031690fe649" />
+
+
 📂 Project Structure
 apps/
 
