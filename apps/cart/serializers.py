@@ -7,7 +7,7 @@ class CartSerializer(serializers.ModelSerializer):
     user=UserSerializer(read_only=True)
     class Meta:
         model=Cart
-        fields=['user', 'created_at', 'updated_at' 'book', 'is_active', 'get_total_items', 'get_total_price' ]
+        fields=['user', 'created_at', 'updated_at', 'is_active', 'get_total_items', 'get_total_price' ]
         
     
 

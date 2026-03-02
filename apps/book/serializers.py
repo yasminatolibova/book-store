@@ -1,4 +1,4 @@
-from .models import Category, Author, Book, Coupon
+from .models import Category, Author, Book, Coupon, WishList
 from ..accounts.serializers import UserSerializer
 from rest_framework import serializers
 
@@ -21,7 +21,7 @@ class BookSerializer(serializers.ModelSerializer):
     author=AuthorSerializer(read_only=True)
     class Meta:
         model=Book
-        fields=['title', 'user', 'description', 'price', 'discount_price', 'stock', 'isbn', 'language', 'pages', 'published_date', 
+        fields=['title', 'user', 'description', 'price',  'stock', 'isbn', 'language', 'pages', 'published_date', 
                 'cover_image', 'category', 'author']
 
 class CouponApplySerializer(serializers.Serializer):
@@ -31,9 +31,16 @@ class CouponApplySerializer(serializers.Serializer):
         try:
             coupon = Coupon.objects.get(code__iexact=value)  
         except Coupon.DoesNotExist:
-            raise serializers.ValidationError("Bunday promo kod mavjud emas.")
+            raise serializers.ValidationError("Not available")
         
         if not coupon.is_valid():
-            raise serializers.ValidationError("Promo kod muddati tugagan yoki faol emas.")
+            raise serializers.ValidationError("Is not active")
         
         return coupon
+    
+
+class WishListSerializer(serializers.ModelSerializer):
+    user=UserSerializer(read_only=True)
+    class Meta:
+        model=WishList
+        fields=['id', 'user', 'book', 'slug']

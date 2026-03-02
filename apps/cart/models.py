@@ -5,14 +5,6 @@ from ..book.models import Book, Coupon
 from ..accounts.models import User
 from django.core.validators import MinValueValidator
 
-<<<<<<< HEAD
-=======
-class Cart(models.Model):
-    user= models. ForeignKey(User, on_delete=models.CASCADE, related_name='cart', blank=True, null=True)
-     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
-    is_active=models.BooleanField(default=True)
->>>>>>> ac46e6587fbc29326ed9a7303b9496a0e9b4ff42
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart', blank=True, null=True)
@@ -83,7 +75,7 @@ class Orderitem(models.Model):
         return f"{self.book.title}--{self.unit_price}dan"
     
     def get_subtotal(self):
-        return  self.quantity*self.unit_price
+        return  f"{self.quantity}*{self.unit_price}"
 
 
 

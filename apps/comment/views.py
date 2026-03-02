@@ -3,8 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 
 from rest_framework import viewsets, permissions, status
-from .models import Comment, CommentLike
-from .serializers import CommentSerializer
+from .models import Comment, CommentLike, Rating
+from .serializers import CommentSerializer, RatingSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -44,6 +44,20 @@ class CommentViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_201_CREATED
         )
     
+class RatingViewSet(viewsets.ModelViewSet):
+    
+    serializer_class=RatingSerializer
+    permission_classes=[permissions.IsAuthenticated]
 
+    def get_queryset(self):
+        queryset=Rating.objects.all()
+        book_id=self.request.query_params.get('book')
+
+        if book_id:
+            queryset=queryset.filter(book_id=book_id)
+        return queryset
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
