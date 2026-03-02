@@ -3,19 +3,32 @@ Instagram Clone
 This is a backend Book Store project built with Django and Django REST Framework.
 
 🚀 Features
+
 · User Registration, Login, Logout & Reset password
+
 · Finding out which author books and which books are available in this book store
+
 · Comment System
+
 · Rating System
+
 · Wishlist
+
 · Cart
+
 · Order
+
 · Promo Code
+
 🛠 Tech Stack
+
 Python
+
 Django
+
 Django REST Framework
-JWT Authentication
+
+
 ⚙️ Installation
 Clone the repository:
 
